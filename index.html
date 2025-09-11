@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Trip Venue - Coming Soon</title>
+  <style>
+    /* Reset and base styles */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Arial', sans-serif; background: linear-gradient(45deg, #add8e6, #e0ffff); background-size: 400% 400%; animation: gradient 10s ease infinite; }
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    header { padding: 20px; text-align: center; color: white; }
+    header h1 { font-size: 3rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+    /* Hero section with island image */
+    .hero { position: relative; text-align: center; color: white; margin: 20px; }
+    .hero img { width: 100%; max-height: 500px; object-fit: cover; opacity: 0.9; border-radius: 8px; }
+    .hero .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+    .hero .overlay h2 { font-size: 3rem; animation: fadeIn 2s ease-in-out; }
+    .hero .overlay p { font-size: 1.2rem; margin-top: 10px; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-20px);} to { opacity: 1; transform: translateY(0);} }
+    /* Boxes for offers */
+    .boxes { display: flex; flex-wrap: wrap; justify-content: center; margin: 20px; gap: 20px; }
+    .box { background: white; width: 200px; height: 200px; padding: 20px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.15); transition: transform 0.3s; text-align: center; }
+    .box:hover { transform: scale(1.05); }
+    .box h3 { margin-bottom: 10px; color: #333; }
+    .box p { font-size: 0.95rem; color: #555; }
+    /* Contact popup styles */
+    .popup { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 100; }
+    .popup .content { background: white; padding: 30px; border-radius: 8px; text-align: center; width: 300px; }
+    .popup .content h3 { margin-bottom: 20px; }
+    .close-popup { margin-top: 10px; background: #ff6b6b; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
+    /* Contact button */
+    .contact-button { margin: 30px; padding: 15px 25px; background: #007bff; color: white; border: none; border-radius: 5px; font-size: 1.2rem; cursor: pointer; transition: background 0.3s; }
+    .contact-button:hover { background: #0056b3; }
+    footer { text-align: center; padding: 20px; color: white; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>My Trip Venue</h1>
+  </header>
+  <section class="hero">
+    <img src="./assets/island.jpg" alt="Island Tours and Beaches" style="width:100%; max-height:500px; object-fit:cover;" >
+    <div class="overlay">
+      <h2>Coming Soon...</h2>
+      <p>Experience the best island tours and beach adventures.</p>
+    </div>
+  </section>
+  <section class="boxes">
+    <div class="box">
+      <h3>Packages</h3>
+      <p>Cheaper travel packages on the way!</p>
+    </div>
+    <div class="box">
+      <h3>Flights</h3>
+      <p>Exciting flight offers coming soon!</p>
+    </div>
+    <div class="box">
+      <h3>Hotels</h3>
+      <p>Best hotel deals for your stays.</p>
+    </div>
+    <div class="box">
+      <h3>24*7 Support</h3>
+      <p>Round-the-clock support with exciting offers.</p>
+    </div>
+  </section>
+  <!-- Additional section for icons/gifs -->
+  <section style="text-align: center; margin: 20px;">
+    <h2>Our Exciting Offers</h2>
+    <img src="./assets/icon.jpeg" alt="Travel Icon" style="width:100px; height:auto; margin-top:10px;">
+  </section>
+  <div style="text-align: center;">
+    <button class="contact-button" onclick="openPopup()">Contact Us</button>
+  </div>
+  <div class="popup" id="popup">
+    <div class="content">
+      <h3>Contact Rahul</h3>
+      <p>+91 8527914111</p>
+      <button class="close-popup" onclick="closePopup()">Close</button>
+    </div>
+  </div>
+  <footer>
+    <p>&copy; 2025 My Trip Venue. All rights reserved.</p>
+  </footer>
+  <script>
+    function openPopup() {
+      document.getElementById('popup').style.display = 'flex';
+    }
+    function closePopup() {
+      document.getElementById('popup').style.display = 'none';
+    }
+    function handleSubmit(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('.email-input').value;
+            
+            // Simple email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (emailRegex.test(email)) {
+                // Store email in memory (you can modify this to send to your server)
+                console.log('Email submitted:', email);
+                
+                // Show success message using consistent branding and design
+                alert('Thank you for joining TravelQuest! We\'ll notify you as soon as we launch our amazing travel adventures! 🌍✈️');
+                event.target.querySelector('.email-input').value = '';
+            } else {
+                alert('Please enter a valid email address.');
+            }
+        }
+
+        // Add some interactive effects
+        document.addEventListener('mousemove', function(e) {
+            const elements = document.querySelectorAll('.floating-element');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            elements.forEach((element, index) => {
+                const speed = (index + 1) * 0.5;
+                element.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+            });
+        });
+
+        // Add touch support for mobile
+        document.addEventListener('touchmove', function(e) {
+            if (e.touches.length > 0) {
+                const touch = e.touches[0];
+                const elements = document.querySelectorAll('.floating-element');
+                const x = touch.clientX / window.innerWidth;
+                const y = touch.clientY / window.innerHeight;
+                
+                elements.forEach((element, index) => {
+                    const speed = (index + 1) * 0.3;
+                    element.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+                });
+            }
+        });
+  </script>
+</body>
+</html>
